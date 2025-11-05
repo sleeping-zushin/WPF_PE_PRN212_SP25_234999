@@ -1,0 +1,120 @@
+﻿<Window x:Class="ResearchProjectManagement_SE123456.ResearchList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ResearchProjectManagement_SE123456"
+        mc:Ignorable="d"
+        Title="Research Project Management" 
+        Height="500" Width="800"
+        FontFamily="Tahoma"
+        FontSize="13"
+        Background="#FFF5F5DC"
+        >
+    <Grid>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0"
+                   Name="welcomeLabel"
+                   Content="Hello User"
+                   FontSize="26" 
+                   Foreground="#FF1e3A8a"
+                   FontWeight="Bold"
+                   />
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Research Management" 
+                   VerticalAlignment="Center" 
+                   HorizontalAlignment="Left"
+                   FontSize="26" 
+                   Foreground="#FF1e3A8a"
+                   FontWeight="Bold"/>
+
+                <StackPanel Grid.Column="1" 
+                    Orientation="Horizontal" 
+                    VerticalAlignment="Center">
+
+                    <Button Content="Thêm Mới" 
+                    Name="addButton" 
+                    Background="#FFFFF8EB" 
+                    Padding="5" Click="addButton_Click" />
+
+                    <Button Content="Xóa" 
+                    Name="deleteButton" 
+                    Background="#FFFFF8EB" 
+                    Padding="5" 
+                    Click="deleteButton_Click"
+                    IsEnabled="False"/>
+
+                    <Button Content="Cập Nhật" 
+                    Name="updateButton" 
+                    Background="#FFFFF8EB" 
+                    Padding="5" 
+                    IsEnabled="False" Click="updateButton_Click"/>
+                    
+                </StackPanel>
+            </Grid>
+
+            <DataGrid Grid.Row="2"
+              Name="researchProjectDataGrid"
+              AutoGenerateColumns="False"
+              IsReadOnly="True"
+              SelectionMode="Single"
+              SelectionChanged="researchProjectDataGrid_SelectionChanged"
+              Margin="0,10,0,0">
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="ID" 
+                                Binding="{Binding ProjectId}" 
+                                Width="60" />
+
+
+                    <DataGridTextColumn Header="Tên Project" 
+                                Binding="{Binding ProjectTitle}" 
+                                Width="*"/>
+
+                    <DataGridTextColumn Header="Lĩnh vực" 
+                                Binding="{Binding ResearchField}" 
+                                Width="150"/>
+
+                    <DataGridTextColumn Header="Ngày bắt đầu"
+                                Binding="{Binding StartDate, StringFormat='dd/MM/yyyy'}"
+                                Width="110"/>
+
+                    <DataGridTextColumn Header="Ngày kết thúc"
+                                Binding="{Binding EndDate, StringFormat='dd/MM/yyyy'}"
+                                Width="110"/>
+
+                    <DataGridTextColumn Header="Ngân sách (USD)" 
+                                Binding="{Binding Budget, StringFormat=C2}"
+                                Width="150">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="TextAlignment" Value="Right"/>
+                                <Setter Property="Margin" Value="0,0,10,0"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Header="Lead Researcher" 
+                                Binding="{Binding LeadResearcherId}" 
+                                Width="80"/>
+                    <DataGridTextColumn Header="Lead Researcher" 
+                                Binding="{Binding LeadResearcher.FullName}" 
+                                Width="80"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </Grid>
+    </Grid>
+</Window>
