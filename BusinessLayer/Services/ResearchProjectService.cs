@@ -10,11 +10,11 @@ namespace BusinessLayer.Services
 {
     public class ResearchProjectService
     {
-        private readonly ResearchProjectRepo _researchProjectRepo;
-        public ResearchProjectService()
-        {
-            _researchProjectRepo = new ResearchProjectRepo();
-        }
+        private readonly ResearchProjectRepo _researchProjectRepo = new ResearchProjectRepo();
+        //public ResearchProjectService()
+        //{
+        //    _researchProjectRepo = new ResearchProjectRepo();
+        //}
         public List<ResearchProject> GetAll()
         {
             return _researchProjectRepo.GetAll();

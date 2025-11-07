@@ -35,22 +35,22 @@ namespace ResearchProjectManagement_SE123456
 
             MessageBox.Show($"Username: {email}\nPassword: {password}", "Login Info", MessageBoxButton.OK, MessageBoxImage.Information);
 
-            // TODO: Get user from database
-            var _userAccountService = new UserAccountService();
-            var loginUser = _userAccountService.GetByEmail(email);
-
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Please enter username and password"); // Theo de bai
             }
-            else if (loginUser.Email.Equals(email) && loginUser.Password.Equals(password))
+
+            // TODO: Get user from database
+            var _userAccountService = new UserAccountService();
+            var loginUser = _userAccountService.GetByEmail(email);
+
+            if (loginUser.Email.Equals(email) && loginUser.Password.Equals(password))
             {
                 if (loginUser.Role.Value == 2 || loginUser.Role.Value == 3)
                 {
                     ResearchList researchListWindow = new ResearchList(loginUser);
 
                     researchListWindow.Show();
-
                 }
                 else
                 {

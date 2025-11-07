@@ -113,7 +113,7 @@ namespace ResearchProjectManagement_SE123456
                 // each word start with a capital letter or a digit (1-9)
 
                 // Cách 1: dùng vòng lặp
-                Regex wordRegex = new Regex("^[A-Z0-9]*");
+                Regex wordRegex = new Regex("^[A-Z0-9].*");
                 var words = researchField.Split(' ');
                 foreach (var word in words)
                 {
@@ -130,12 +130,22 @@ namespace ResearchProjectManagement_SE123456
 
 
                 // title cannot contain special characters such as $, %, ^, @
-                Regex specialCharRegex = new Regex(".*[$%^@].*");
-                if (specialCharRegex.IsMatch(projectTitle))
-                {
-                    throw new Exception("Project Title cannot contain special characters such as $, %, ^, @.");
-                }
+                // Cách 1
+                //Regex specialCharRegex = new Regex(".*[$%^@].*");
+                //if (specialCharRegex.IsMatch(projectTitle))
+                //{
+                //    throw new Exception("Project Title cannot contain special characters such as $, %, ^, @.");
+                //}
 
+                // cách 2
+                string specialChars = "$%^@";
+                for (int i = 0; i < specialChars.Length; i++)
+                {
+                    if (projectTitle.Contains(specialChars[i]))
+                    {
+                        throw new Exception("Project Title cannot contain special characters such as $, %, ^, @.");
+                    }
+                }
 
                 // DATA SAVING
                 ResearchProject researchProject = new ResearchProject

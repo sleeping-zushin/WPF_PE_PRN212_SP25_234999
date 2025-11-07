@@ -10,6 +10,11 @@ namespace DataAccessLayer.Repositories
     {
         public readonly Sp25researchDbContext _context = new Sp25researchDbContext();
 
+        //public ResearcherRepo(Sp25researchDbContext context)
+        //{
+        //    _context = context;
+        //}
+
         public List<Researcher> GetAll()
         {
             return _context.Researchers.ToList();

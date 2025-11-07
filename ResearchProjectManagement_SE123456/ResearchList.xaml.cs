@@ -173,6 +173,7 @@ namespace ResearchProjectManagement_SE123456
         {
             researchProjectDataGrid.ItemsSource = null;
             var researchProjects = _researchProjectService.GetAll();
+
             researchProjectDataGrid.ItemsSource = researchProjects;
             researchProjectDataGrid.Items.Refresh();
         }
@@ -230,6 +231,7 @@ namespace ResearchProjectManagement_SE123456
         {
             ResearchProject selectedProject = (ResearchProject)researchProjectDataGrid.SelectedItem;
             ResearchProjectForm researchProjectForm = new ResearchProjectForm(selectedProject);
+
             var result = researchProjectForm.ShowDialog();
 
             if (result == true)

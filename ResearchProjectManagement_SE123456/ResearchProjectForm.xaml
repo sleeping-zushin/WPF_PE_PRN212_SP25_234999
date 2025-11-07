@@ -135,7 +135,7 @@
                     Foreground="#FF6B705C"
                     Width="120"
                     VerticalAlignment="Center"
-                    Content="Project title"
+                    Content="Project budget"
                     />
                 <TextBox 
                     Height="32"
